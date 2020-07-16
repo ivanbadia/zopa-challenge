@@ -77,7 +77,3 @@ I have implemented the algorithm needed to match the specified output, but with 
  * The market.csv file used for the example above will be given alongside this specification. It is
  acceptable to submit your program if it returns an answer that does not exactly match the
  example given.
- * If you have any questions, then please contact your recruiter. When you return the test, please
- send it to recruitment-tech-test@zopa.com, ideally as a zip file. To keep things fair for all
- candidates, we ask that you please don’t publish your solution on any public forums. By
- returning the test, you also confirm that you are submitting your own work. 

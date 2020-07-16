@@ -29,3 +29,55 @@ All the lenders contained in the market file are loaded and ordered in memory. I
  
 I have implemented the algorithm needed to match the specified output, but with the given output "Total repayment" is
  not equal to "Monthly repayment" * 36. In my opinion, "Total repayment" should be calculated with "Monthly repayment" already rounded.
+ 
+ 
+ # Zopa Technical Test
+ 
+ There is need for an application to find a quote from Zopa’s market of lenders for 36-month loans
+ that apply interest on a monthly basis.
+ 
+ Each lender in the market offers an amount of money to lend and the annual interest rate they
+ expect in return. A list of all lenders and their offers will be provided in a CSV file.
+ 
+ The application should provide as low a rate as is possible to ensure that Zopa's quotes are as
+ competitive as they can be against our competitors'. Details of the monthly repayment amount
+ and the total repayment amounts should be shown in addition to the amount requested and the
+ annual interest rate for the quote.
+ 
+ Repayment amounts should be displayed to two decimal places and the annual interest rate
+ displayed to one decimal place.
+ 
+ A quote may be requested in any £100 increment between £1000 and £15000 inclusive. If the
+ market does not have enough offers to fulfil the request, then the application should state that it is
+ not possible to provide a quote.
+ 
+ The application should take arguments in the form:
+ 
+ [market_file_path] [loan_amount]
+ And produce outputs in the form:
+ Requested amount: £XXXX
+ Annual Interest Rate: X.X%
+ Monthly repayment: £XXXX.XX
+ Total repayment: £XXXX.XX
+ Example output:
+ > $ ./zopa-rate market.csv 1000
+ > Requested amount: £1000
+ > Annual Interest Rate: 7.0%
+ > Monthly repayment: £30.78
+ > Total repayment: £1108.10
+ 
+ ## Remarks
+ * We accept submissions in any of the following languages: C#, F#, Java, Kotlin, Scala, Python,
+ JavaScript, though we recommend you choose the language most suitable to the role you are
+ applying for.
+ * The monthly repayments should spread the total repayment cost over the term of the loan.
+ Here is an explanation of how to calculate this:
+ https://en.wikipedia.org/wiki/Amortization_calculator#The_formula
+ * We will review your code and run it against further test cases to see how it handles them
+ * The market.csv file used for the example above will be given alongside this specification. It is
+ acceptable to submit your program if it returns an answer that does not exactly match the
+ example given.
+ * If you have any questions, then please contact your recruiter. When you return the test, please
+ send it to recruitment-tech-test@zopa.com, ideally as a zip file. To keep things fair for all
+ candidates, we ask that you please don’t publish your solution on any public forums. By
+ returning the test, you also confirm that you are submitting your own work. 

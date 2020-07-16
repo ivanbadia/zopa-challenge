@@ -1,0 +1,55 @@
+plugins {
+    id 'java'
+    id "application"
+    id 'idea'
+    id 'org.unbroken-dome.test-sets' version '2.2.1'
+}
+
+group 'com.zopa.challenge'
+version '1.0-SNAPSHOT'
+
+apply plugin : "java"
+
+repositories {
+    mavenCentral()
+}
+
+testSets {
+    integrationTest { dirName = 'integration-test' }
+}
+
+dependencies {
+    // Test
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.5.2")
+    testRuntime("org.junit.jupiter:junit-jupiter-engine:5.5.2")
+    testImplementation("org.assertj:assertj-core:3.14.0")
+    testImplementation("org.mockito:mockito-inline:3.2.4")
+    testImplementation("org.mockito:mockito-junit-jupiter:3.2.4")
+}
+
+tasks.withType(Test) {
+    useJUnitPlatform()
+}
+
+//Ensure that the check task fails the build if there are failing integration tests.
+check.dependsOn integrationTest
+//Ensure that our unit tests are run before our integration tests
+integrationTest.mustRunAfter test
+
+def mainClass = "com.zopa.challenge.LoanApplication"
+
+ext {
+    javaMainClass = mainClass
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': javaMainClass
+        )
+    }
+}
+
+application {
+    mainClassName = javaMainClass
+}
